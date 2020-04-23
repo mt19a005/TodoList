@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<LinearLayout
 xmlns:android="http://schemas.android.com/apk/res/android"
 xmlns:app="http://schemas.android.com/apk/res-auto"
 xmlns:tools="http://schemas.android.com/tools"
@@ -12,11 +12,19 @@ tools:context=".MakeTodo">
     <EditText
         android:id="@+id/inputText"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="331dp"
+
         android:ems="10"
         android:inputType="textPersonName"
         android:text=""
         tools:layout_editor_absoluteX="2dp"
         tools:layout_editor_absoluteY="1dp" />
-</androidx.constraintlayout.widget.ConstraintLayout>
 
+    <Button
+        android:id="@+id/returnButton"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="Button" />
+
+
+</LinearLayout>
