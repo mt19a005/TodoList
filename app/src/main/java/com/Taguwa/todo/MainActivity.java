@@ -6,12 +6,16 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-
+    ArrayList data = new ArrayList<>();
     static final int requestCodeMakeTodo = 1;
-
+    Button button;
 
     @Override
     //アクティビティが生成されたとき
@@ -19,15 +23,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button button = findViewById(R.id.newButton);
+        button = findViewById(R.id.newButton);
 
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, MakeTodo.class);
-
-                intent.putExtra("asd", "aho");
+                  Intent intent = new Intent(MainActivity.this, MakeTodo.class);
+//
+//                intent.putExtra("asd", "aho");
                 startActivityForResult(intent, requestCodeMakeTodo);
             }
         });
@@ -39,16 +43,24 @@ public class MainActivity extends AppCompatActivity {
         switch (requestCode) {
             case requestCodeMakeTodo:
                 if (RESULT_OK == resultCode) {
-                    String name = data.getStringExtra("back");
+                    String returnFromMakeTodo = data.getStringExtra("back");
 //                    String name2 = data.getStringExtra("back2");
-                    Log.d("hoge", "result Yes");
-                    Log.d("hoge", name);
+                    Log.d("hoge", returnFromMakeTodo);
+                    AddListView(returnFromMakeTodo);
 //                    Log.d("hoge", name2);
-
-
                 }
-                Log.d("hoge", "result No");
                 break;
         }
+    }
+
+    void AddListView(String  returnFromMakeTodo){
+        data.add(returnFromMakeTodo);
+
+        // リスト項目とListViewを対応付けるArrayAdapterを用意する
+        ArrayAdapter adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, data);
+
+        // ListViewにArrayAdapterを設定する
+        ListView listView = (ListView)findViewById(R.id.memoList);
+        listView.setAdapter(adapter);
     }
 }

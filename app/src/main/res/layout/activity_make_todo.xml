@@ -12,7 +12,7 @@ tools:context=".MakeTodo">
     <EditText
         android:id="@+id/inputText"
         android:layout_width="match_parent"
-        android:layout_height="331dp"
+        android:layout_height="650dp"
 
         android:ems="10"
         android:inputType="textPersonName"
@@ -24,7 +24,7 @@ tools:context=".MakeTodo">
         android:id="@+id/returnButton"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Button" />
+        android:text="Return" />
 
 
 </LinearLayout>
